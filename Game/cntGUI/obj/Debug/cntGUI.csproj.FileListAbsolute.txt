@@ -1,0 +1,10 @@
+C:\Users\Gleb\source\repos\cntGUI\bin\Debug\cntGUI.exe.config
+C:\Users\Gleb\source\repos\cntGUI\bin\Debug\cntGUI.exe
+C:\Users\Gleb\source\repos\cntGUI\bin\Debug\cntGUI.pdb
+C:\Users\Gleb\source\repos\cntGUI\obj\Debug\cntGUI.csprojAssemblyReference.cache
+C:\Users\Gleb\source\repos\cntGUI\obj\Debug\cntGUI.Properties.Resources.resources
+C:\Users\Gleb\source\repos\cntGUI\obj\Debug\cntGUI.csproj.GenerateResource.cache
+C:\Users\Gleb\source\repos\cntGUI\obj\Debug\cntGUI.exe
+C:\Users\Gleb\source\repos\cntGUI\obj\Debug\cntGUI.pdb
+C:\Users\Gleb\source\repos\cntGUI\obj\Debug\cntGUI.MainWindow.resources
+C:\Users\Gleb\source\repos\cntGUI\obj\Debug\cntGUI.GameWindow.resources
