@@ -1,0 +1,6 @@
+/packages
+CZT/bin
+Tests/bin
+CZT/obj
+Tests/obj
+.vs/
