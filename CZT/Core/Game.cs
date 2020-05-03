@@ -9,42 +9,26 @@ namespace CZT.Core
     class Game
     {
         public readonly List<Player> Players;
-        public readonly int height;
-        public readonly int width;
-        private int[,] map;
+        private List<Level> levels;
 
-        public int[,] Map
+        public List<Level> Levels
         {
             get
             {
-                return map;
+                return levels;
             }
-        }
-
-        private int moveNum;
-
-        private int MoveNum
-        {
-            get
+            private set
             {
-                return moveNum;
+                levels = value;
             }
         }
+
 
         public Game(int playersCount, int width, int height)
         {
-            this.width = width;
-            this.height = height;
-            moveNum = 0;
+            levels = new List<Level>();
+            Players = new List<Player>();
             PreparePlayers(playersCount);
-            PrepareMap();
-        }
-
-        private void PrepareMap()
-        {
-            for (int x = 0; x < width; x++)
-                for (int y = 0; y < height; y++)
-                    map[x, y] = 0;
         }
 
         private void PreparePlayers(int playersCount)
@@ -57,26 +41,9 @@ namespace CZT.Core
             }
         }
 
-        public void MakeMove()
-        {
-            foreach (var player in Players)
-            {
-                player.MakeMove(this);
-            }
-            var winner = GetWinner();
-            if (winner != null)
-                EndGame();
-        }
-
         private void EndGame()
         {
             //something
-        }
-
-        private Player GetWinner()
-        {
-            //возвращаем победителя, либо null
-            return null;
         }
     }
 }

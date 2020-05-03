@@ -23,12 +23,12 @@ namespace CZT.Core
             Name = "player" + Id;
         }
 
-        public void MakeMove(Game game)
+        public void MakeMove(Level level)
         {
             int x = 0;
             int y = 0;
             //закрашиваем магически выбранную клетку в Id игрока
-            game.Map[x, y] = Id;
+            level.Map[x, y] = Id;
             //something
         }
     }
