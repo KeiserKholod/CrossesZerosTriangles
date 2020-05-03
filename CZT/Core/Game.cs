@@ -19,7 +19,6 @@ namespace CZT.Core
             get { return Levels[Levels.Count - 1]; }
         }
 
-
         public List<Level> Levels
         {
             get
@@ -39,8 +38,6 @@ namespace CZT.Core
             RealPlayersCount = realPlayersCount;
             PlayersCount = playersCount;
             PreparePlayers(names);
-
-
         }
 
         public void StartLevel(int width, int height)
@@ -64,7 +61,6 @@ namespace CZT.Core
                 Players.Add(player);
             }
         }
-
 
         private void EndGame()
         {
