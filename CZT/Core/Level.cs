@@ -49,6 +49,7 @@ namespace CZT.Core
             this.height = height;
             moveNum = 0;
             currentPlayerInd = 0;
+            PrepareAllLInes(AllLines);
             PrepareMap();
         }
 
