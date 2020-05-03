@@ -49,6 +49,7 @@ namespace CZT.Core
             for (int i = 0; i < RealPlayersCount; i++)
             {
                 var player = new Player(names[i], i + 1);
+                Players.Add(player);
             }
             //добавляем ботов
             for (int i = RealPlayersCount + 1; i <= PlayersCount - RealPlayersCount; i++)
