@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace CZT.Core
         private int[,] map;
         private int currentPlayerInd;
         private List<List<Line>> allLines;
+        public HashSet<Point> settedPoints = new HashSet<Point>();
 
         public List<List<Line>> AllLines { get; set; }
 
@@ -81,9 +83,9 @@ namespace CZT.Core
                 }
             }
             currentPlayerInd = 0;
-           /* var winner = GetWinner();
-            if (winner != null)
-                EndLevel();*/
+            /* var winner = GetWinner();
+             if (winner != null)
+                 EndLevel();*/
         }
 
         private Player GetWinner()

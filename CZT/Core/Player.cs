@@ -12,7 +12,6 @@ namespace CZT.Core
         public readonly int Id;
         private int score = 0;
         private List<Line> lines;
-
         public List<Line> Lines { get; set; }
 
         public int Score { get; set; }
@@ -43,7 +42,7 @@ namespace CZT.Core
         {
             //закрашиваем магически выбранную клетку в Id игрока
             //добавляем линию?
-            level.Map[0,0] = Id;
+            level.Map[0, 0] = Id;
             //something
         }
     }
