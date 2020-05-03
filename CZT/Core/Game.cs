@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CZT.Core
 {
-    class Game
+    public class Game
     {
         public readonly List<Player> Players;
         private List<Level> levels;
@@ -55,7 +55,7 @@ namespace CZT.Core
                 Players.Add(player);
             }
             //добавляем ботов
-            for (int i = RealPlayersCount + 1; i <= PlayersCount - RealPlayersCount; i++)
+            for (int i = RealPlayersCount + 1; i <= PlayersCount; i++)
             {
                 var player = new Player(i);
                 Players.Add(player);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CZT.Core
 {
-    class Player
+    public class Player
     {
         public readonly String Name;
         public readonly int Id;

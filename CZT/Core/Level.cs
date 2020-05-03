@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CZT.Core
 {
-    class Level
+    public class Level
     {
         private Game game;
         public readonly int height;
@@ -64,6 +64,7 @@ namespace CZT.Core
 
         private void PrepareMap()
         {
+            Map = new int[width, height];
             for (int x = 0; x < width; x++)
                 for (int y = 0; y < height; y++)
                     Map[x, y] = 0;

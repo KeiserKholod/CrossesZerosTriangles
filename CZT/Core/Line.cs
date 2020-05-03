@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CZT.Core
 {
-    class Line
+    public class Line
     {
     }
 }
