@@ -13,6 +13,7 @@ namespace CZT.Core
         public readonly int RealPlayersCount;
         public readonly int PlayersCount;
 
+
         public List<Level> Levels
         {
             get

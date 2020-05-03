@@ -14,6 +14,9 @@ namespace CZT.Core
         private int moveNum;
         private int[,] map;
         private int currentPlayerInd;
+        private List<List<Line>> allLines;
+
+        public List<List<Line>> AllLines { get; set; }
 
         public int MoveNum
         {
@@ -47,6 +50,13 @@ namespace CZT.Core
             moveNum = 0;
             currentPlayerInd = 0;
             PrepareMap();
+        }
+
+        private void PrepareAllLInes(List<List<Line>> allLines)
+        {
+            AllLines = new List<List<Line>>();
+            foreach (var player in game.Players)
+                AllLines.Add(player.Lines);
         }
 
         private void PrepareMap()
