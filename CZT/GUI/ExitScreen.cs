@@ -61,7 +61,7 @@ namespace CZT.GUI
             cancelButton.Click += (sender, args) =>
             {
                 this.Hide();
-                var mainMenu = new MainScreen();
+                var mainMenu = new MainScreen(5, 3, 3);
                 mainMenu.Show();
             };
 

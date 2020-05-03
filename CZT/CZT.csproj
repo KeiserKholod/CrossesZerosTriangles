@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Resources\back.jpg" />
     <Content Include="Resources\circle.jpg" />
     <Content Include="Resources\cross.jpg" />
     <Content Include="Resources\triangle.jpg" />

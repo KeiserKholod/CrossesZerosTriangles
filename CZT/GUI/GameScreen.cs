@@ -11,23 +11,21 @@ namespace CZT.GUI
     class GameScreen : Form
     {
         //private Game game; здесь будет класс игры
-        private int Size;
         private int PlayersCount;
 
         TableLayoutPanel table;
         public GameScreen(int size)
         {
-            this.Size = size;
             var exitButton = new Button();
             table = new TableLayoutPanel();
             table.BackColor = Color.FromArgb(173, 216, 230);
-            for (int i = 0; i < this.Size; i++)
+            for (int i = 0; i < size; i++)
             {
-                table.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / this.Size));
-                table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / this.Size));
+                table.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / size));
+                table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / size));
             }
-            for (int column = 0; column < this.Size; column++)
-                for (int row = 0; row < this.Size; row++)
+            for (int column = 0; column < size; column++)
+                for (int row = 0; row < size; row++)
                 {
                     var button = new Button();
                     button.BackColor = Color.FromArgb(255, 255, 255);
@@ -37,14 +35,14 @@ namespace CZT.GUI
                     button.Click += MakeMove;
                     table.Controls.Add(button, column, row);
                 }
-            table.Size = new Size(74 * this.Size, 74 * this.Size);
+            table.Size = new Size(74 * size, 74 * size);
 
 
             // Game Screen Settins
             this.AutoScaleMode = AutoScaleMode.None;
             this.BackColor = Color.FromArgb(173, 216, 230);
-            this.ClientSize = new Size(74 * this.Size, 74 * this.Size + 60);
-            this.MinimumSize = new Size(74 * this.Size, 74 * this.Size + 60);
+            this.ClientSize = new Size(74 * size, 74 * size + 60);
+            this.MinimumSize = new Size(74 * size, 74 * size + 60);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.None;
 
@@ -62,7 +60,7 @@ namespace CZT.GUI
             exitButton.Click += (sender, args) =>
             {
                 this.Hide();
-                var mainScreen = new MainScreen();
+                var mainScreen = new MainScreen(size, 3, 3);
                 mainScreen.Show();
             };
 

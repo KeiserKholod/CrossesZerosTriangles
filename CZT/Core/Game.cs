@@ -9,74 +9,62 @@ namespace CZT.Core
     class Game
     {
         public readonly List<Player> Players;
-        public readonly int height;
-        public readonly int width;
-        private int[,] map;
-
-        public int[,] Map
+        private List<Level> levels;
+        public readonly int RealPlayersCount;
+        public readonly int PlayersCount;
+        public Level CurrentLevel
         {
             get
             {
-                return map;
+                return Levels[Levels.Count - 1];
             }
         }
 
-        private int moveNum;
-
-        private int MoveNum
+        public List<Level> Levels
         {
             get
             {
-                return moveNum;
+                return levels;
+            }
+            private set
+            {
+                levels = value;
             }
         }
 
-        public Game(int playersCount, int width, int height)
+        public Game(List<String> names, int playersCount, int realPlayersCount)
         {
-            this.width = width;
-            this.height = height;
-            moveNum = 0;
-            PreparePlayers(playersCount);
-            PrepareMap();
+            levels = new List<Level>();
+            Players = new List<Player>();
+            RealPlayersCount = realPlayersCount;
+            PlayersCount = playersCount;
+            PreparePlayers(names);
         }
 
-        private void PrepareMap()
+        public void StartLevel(int width, int height)
         {
-            for (int x = 0; x < width; x++)
-                for (int y = 0; y < height; y++)
-                    map[x, y] = 0;
+            var level = new Level(this, width, height);
+            Levels.Add(level);
         }
 
-        private void PreparePlayers(int playersCount)
+        //передавать список с именами живых игроков
+        private void PreparePlayers(List<String> names)
         {
-            for (int i = 0; i < playersCount; i++)
+            for (int i = 0; i < RealPlayersCount; i++)
+            {
+                var player = new Player(names[i], i + 1);
+                Players.Add(player);
+            }
+            //добавляем ботов
+            for (int i = RealPlayersCount + 1; i <= PlayersCount - RealPlayersCount; i++)
             {
                 var player = new Player(i);
-                //var player = new Player(name, i);
                 Players.Add(player);
             }
         }
-
-        public void MakeMove()
-        {
-            foreach (var player in Players)
-            {
-                player.MakeMove(this);
-            }
-            var winner = GetWinner();
-            if (winner != null)
-                EndGame();
-        }
-
         private void EndGame()
         {
             //something
-        }
-
-        private Player GetWinner()
-        {
-            //возвращаем победителя, либо null
-            return null;
         }
     }
 }
