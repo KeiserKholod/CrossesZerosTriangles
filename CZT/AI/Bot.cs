@@ -8,5 +8,10 @@ namespace CZT.AI
 {
     class Bot
     {
+        private int winCoef;
+        private int loseCoef;
+        private int neutralCoef;
+
+        
     }
 }

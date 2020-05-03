@@ -10,7 +10,7 @@ namespace CZT.GUI
 {
     class MainScreen : Form
     {
-        private int Size = 7;
+        private int Size = 8;
         private int PlayersCount = 3;
 
         public MainScreen()
@@ -33,7 +33,7 @@ namespace CZT.GUI
 
             // Main Screen Settins
             this.AutoScaleMode = AutoScaleMode.None;
-            this.BackColor = Color.FromArgb(255, 69, 0);
+            this.BackColor = Color.FromArgb(237, 238, 240);
             this.ClientSize = new Size(1200, 600);
             this.MinimumSize = new Size(1200, 600);
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -45,7 +45,7 @@ namespace CZT.GUI
             exitButton.Cursor = Cursors.Hand;
             exitButton.FlatStyle = FlatStyle.Popup;
             exitButton.Font = new Font("MV Boli", 20.25F);
-            exitButton.BackColor = Color.FromArgb(255, 255, 0);
+            exitButton.BackColor = Color.FromArgb(74, 118, 168);
             exitButton.ForeColor = Color.FromArgb(0, 0, 0);
             exitButton.ImageAlign = ContentAlignment.BottomCenter;
             exitButton.Location = new Point((int)(ClientSize.Width * 6.6 / 100), (int)(ClientSize.Height / 2) + 140);
@@ -64,7 +64,7 @@ namespace CZT.GUI
             playButton.Cursor = Cursors.Hand;
             playButton.FlatStyle = FlatStyle.Popup;
             playButton.Font = new Font("MV Boli", 20.25F);
-            playButton.BackColor = Color.FromArgb(255, 255, 0);
+            playButton.BackColor = Color.FromArgb(74, 118, 168);
             playButton.ForeColor = Color.FromArgb(0, 0, 0);
             playButton.ImageAlign = ContentAlignment.BottomCenter;
             playButton.Location = new Point((int)(ClientSize.Width * 6.6 / 100), (int)(ClientSize.Height / 2));
@@ -73,7 +73,7 @@ namespace CZT.GUI
             playButton.Click += (sender, args) =>
             {
                 this.Hide();
-                var gameScreen = new GameScreen( Size = 5);
+                var gameScreen = new GameScreen(Size = this.Size);
                 gameScreen.Show();
             };
 
@@ -89,7 +89,7 @@ namespace CZT.GUI
             exitFromSettingsButton.ImageAlign = ContentAlignment.BottomCenter;
             exitFromSettingsButton.Location = new Point((int)(ClientSize.Width * 6.6 / 100), (int)(ClientSize.Height / 2) + 140);
             exitFromSettingsButton.Size = new Size(200, 50);
-            exitFromSettingsButton.BackColor = Color.FromArgb(255, 255, 0);
+            exitFromSettingsButton.BackColor = Color.FromArgb(74, 118, 168);
             exitFromSettingsButton.Click += (sender, args) =>
             {
                 playButton.Show();
@@ -110,7 +110,7 @@ namespace CZT.GUI
             settingsButton.ImageAlign = ContentAlignment.BottomCenter;
             settingsButton.Location = new Point((int)(ClientSize.Width * 6.6 / 100), (int)(ClientSize.Height / 2) + 70);
             settingsButton.Size = new Size(200, 50);
-            settingsButton.BackColor = Color.FromArgb(255, 255, 0);
+            settingsButton.BackColor = Color.FromArgb(74, 118, 168);
             settingsButton.Click += (sender, args) =>
             {
                 playButton.Hide();

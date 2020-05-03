@@ -17,7 +17,7 @@ namespace CZT.GUI
             var label = new Label();
 
             this.AutoScaleMode = AutoScaleMode.None;
-            this.BackColor = Color.FromArgb(255, 69, 0);
+            this.BackColor = Color.FromArgb(237, 238, 240);
             this.ClientSize = new Size(1200, 600);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.MinimumSize = new Size(400, 200);
@@ -27,7 +27,7 @@ namespace CZT.GUI
             label.Location = new Point(0, 20);
             label.Size = new Size(400, 100);
             label.Text = "Are you sure, you want to exit?";
-            label.BackColor = Color.FromArgb(255, 69, 0);
+            label.BackColor = Color.FromArgb(237, 238, 240);
             label.Font = new Font("MV Boli", 20.00F);
             label.TextAlign = ContentAlignment.BottomCenter;
 
@@ -36,7 +36,7 @@ namespace CZT.GUI
             exitButton.Cursor = Cursors.Hand;
             exitButton.FlatStyle = FlatStyle.Popup;
             exitButton.Font = new Font("MV Boli", 20.25F);
-            exitButton.BackColor = Color.FromArgb(255, 255, 0);
+            exitButton.BackColor = Color.FromArgb(74, 118, 168);
             exitButton.ForeColor = Color.FromArgb(0, 0, 0);
             exitButton.ImageAlign = ContentAlignment.BottomCenter;
             exitButton.Location = new Point(70, 100);
@@ -52,7 +52,7 @@ namespace CZT.GUI
             cancelButton.Cursor = Cursors.Hand;
             cancelButton.FlatStyle = FlatStyle.Popup;
             cancelButton.Font = new Font("MV Boli", 20.25F);
-            cancelButton.BackColor = Color.FromArgb(255, 255, 0);
+            cancelButton.BackColor = Color.FromArgb(74, 118, 168);
             cancelButton.ForeColor = Color.FromArgb(0, 0, 0);
             cancelButton.ImageAlign = ContentAlignment.BottomCenter;
             cancelButton.Location = new Point(230, 100);
