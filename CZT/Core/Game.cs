@@ -13,6 +13,12 @@ namespace CZT.Core
         public readonly int RealPlayersCount;
         public readonly int PlayersCount;
 
+        private Level currentLevel;
+        public Level CurrentLevel
+        {
+            get { return Levels[Levels.Count - 1]; }
+        }
+
 
         public List<Level> Levels
         {
@@ -25,7 +31,6 @@ namespace CZT.Core
                 levels = value;
             }
         }
-
 
         public Game(List<String> names, int playersCount, int realPlayersCount)
         {
