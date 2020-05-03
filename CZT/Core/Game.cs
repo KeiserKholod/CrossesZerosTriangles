@@ -26,13 +26,13 @@ namespace CZT.Core
         }
 
 
-        public Game(int playersCount, int realPlayersCount)
+        public Game(List<String> names, int playersCount, int realPlayersCount)
         {
             levels = new List<Level>();
             Players = new List<Player>();
             RealPlayersCount = realPlayersCount;
             PlayersCount = playersCount;
-            PreparePlayers();
+            PreparePlayers(names);
 
 
         }
