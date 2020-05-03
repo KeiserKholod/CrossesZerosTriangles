@@ -13,6 +13,7 @@ namespace CZT.Core
         public readonly int width;
         private int moveNum;
         private int[,] map;
+        private int currentPlayerInd;
 
         public int MoveNum
         {
@@ -38,12 +39,13 @@ namespace CZT.Core
             }
         }
 
-        public Level(Game game, int playersCount, int width, int height)
+        public Level(Game game, int width, int height)
         {
             this.game = game;
             this.width = width;
             this.height = height;
             moveNum = 0;
+            currentPlayerInd = 0;
             PrepareMap();
         }
 
@@ -54,12 +56,9 @@ namespace CZT.Core
                     Map[x, y] = 0;
         }
 
-        public void MakeMove()
+        public void MakeMove(int x, int y)
         {
-            foreach (var player in game.Players)
-            {
-                player.MakeMove(this);
-            }
+            game.Players[currentPlayerInd].MakeMove(this, x, y);
             var winner = GetWinner();
             if (winner != null)
                 EndLevel();

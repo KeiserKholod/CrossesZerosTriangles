@@ -10,6 +10,8 @@ namespace CZT.Core
     {
         public readonly List<Player> Players;
         private List<Level> levels;
+        public readonly int RealPlayersCount;
+        public readonly int PlayersCount;
 
         public List<Level> Levels
         {
@@ -24,22 +26,38 @@ namespace CZT.Core
         }
 
 
-        public Game(int playersCount, int width, int height)
+        public Game(int playersCount, int realPlayersCount)
         {
             levels = new List<Level>();
             Players = new List<Player>();
-            PreparePlayers(playersCount);
+            RealPlayersCount = realPlayersCount;
+            PlayersCount = playersCount;
+            PreparePlayers();
+
+
         }
 
-        private void PreparePlayers(int playersCount)
+        public void StartLevel(int width, int height)
         {
-            for (int i = 0; i < playersCount; i++)
+            var level = new Level(this, width, height);
+            Levels.Add(level);
+        }
+
+        //передавать список с именами живых игроков
+        private void PreparePlayers(List<String> names)
+        {
+            for (int i = 0; i < RealPlayersCount; i++)
+            {
+                var player = new Player(names[i], i + 1);
+            }
+            //добавляем ботов
+            for (int i = RealPlayersCount + 1; i <= PlayersCount - RealPlayersCount; i++)
             {
                 var player = new Player(i);
-                //var player = new Player(name, i);
                 Players.Add(player);
             }
         }
+
 
         private void EndGame()
         {
