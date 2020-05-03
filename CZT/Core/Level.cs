@@ -59,9 +59,19 @@ namespace CZT.Core
         public void MakeMove(int x, int y)
         {
             game.Players[currentPlayerInd].MakeMove(this, x, y);
-            var winner = GetWinner();
+            currentPlayerInd++;
+            //ходим ботам после всех игроков
+            //иначе не знаю пока как реализовать
+            if (currentPlayerInd == game.RealPlayersCount)
+            {
+                for (int i = currentPlayerInd; i < game.PlayersCount; i++)
+                {
+                    game.Players[i].MakeMove(this);
+                }
+            }
+           /* var winner = GetWinner();
             if (winner != null)
-                EndLevel();
+                EndLevel();*/
         }
 
         private Player GetWinner()

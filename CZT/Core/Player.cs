@@ -11,6 +11,9 @@ namespace CZT.Core
         public readonly String Name;
         public readonly int Id;
         private int score = 0;
+        private List<Line> lines;
+
+        public List<Line> Lines { get; set; }
 
         public int Score { get; set; }
 
@@ -18,6 +21,7 @@ namespace CZT.Core
         {
             Id = id;
             Name = name;
+            Lines = new List<Line>();
         }
 
         public Player(int id)
@@ -29,7 +33,17 @@ namespace CZT.Core
         public void MakeMove(Level level, int x, int y)
         {
             //закрашиваем магически выбранную клетку в Id игрока
+            //добавляем линию?
             level.Map[x, y] = Id;
+            //something
+        }
+
+        //для бота
+        public void MakeMove(Level level)
+        {
+            //закрашиваем магически выбранную клетку в Id игрока
+            //добавляем линию?
+            level.Map[0,0] = Id;
             //something
         }
     }
