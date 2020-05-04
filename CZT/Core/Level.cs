@@ -10,6 +10,7 @@ namespace CZT.Core
     public class Level
     {
         private Game game;
+        private bool cantMove;
         public readonly int height;
         public readonly int width;
         private int moveNum;
@@ -18,6 +19,7 @@ namespace CZT.Core
         private List<List<Line>> allLines;
         public HashSet<Point> settedPoints = new HashSet<Point>();
 
+        public bool CantMove { get; private set; }
         public List<List<Line>> AllLines { get; set; }
 
         public int MoveNum
@@ -72,6 +74,12 @@ namespace CZT.Core
 
         public void MakeMove(int x, int y)
         {
+            CantMove = false;
+            if (Map[x, y] != 0)
+            {
+                CantMove = true;
+                return;
+            }
             game.Players[currentPlayerInd].MakeMove(this, x, y);
             currentPlayerInd++;
             //ходим ботам после всех игроков
