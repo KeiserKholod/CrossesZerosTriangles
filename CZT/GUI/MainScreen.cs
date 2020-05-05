@@ -12,9 +12,9 @@ namespace CZT.GUI
 {
     class MainScreen : Form
     {
-        public int Size = 5;
-        public int PlayersCount = 3;
-        public int RealPlayersCount = 3;
+        public int Size;
+        public int PlayersCount;
+        public int RealPlayersCount;
         public List<string> PlayersNickNames = new List<string>() { "Player1", "Player2", "Player3" };
 
         public MainScreen(int size, int playersCount, int realPlayesrCount)
@@ -44,11 +44,11 @@ namespace CZT.GUI
             chPlayersCountLabel.Hide();
 
 
-            choosePlayersCount.Items.Add(new KeyValuePair<string, int[]>("1 игрок + 1 бот", new int[] { 1, 1 }));
-            choosePlayersCount.Items.Add(new KeyValuePair<string, int[]>("1 игрок + 2 ботa", new int[] { 1, 2 }));
-            choosePlayersCount.Items.Add(new KeyValuePair<string, int[]>("2 игрока + 0 ботов", new int[] { 2, 0 }));
-            choosePlayersCount.Items.Add(new KeyValuePair<string, int[]>("2 игрока + 1 бот", new int[] { 2, 1 }));
-            choosePlayersCount.Items.Add(new KeyValuePair<string, int[]>("3 игрока + 0 ботов", new int[] { 1, 1 }));
+            choosePlayersCount.Items.Add(new KeyValuePair<string, int[]>("1 игрок + 1 бот", new int[] { 2, 1 }));
+            choosePlayersCount.Items.Add(new KeyValuePair<string, int[]>("1 игрок + 2 ботa", new int[] { 3, 1 }));
+            choosePlayersCount.Items.Add(new KeyValuePair<string, int[]>("2 игрока + 0 ботов", new int[] { 2, 2 }));
+            choosePlayersCount.Items.Add(new KeyValuePair<string, int[]>("2 игрока + 1 бот", new int[] { 3, 2 }));
+            choosePlayersCount.Items.Add(new KeyValuePair<string, int[]>("3 игрока + 0 ботов", new int[] { 3, 3 }));
             choosePlayersCount.Location = new Point(400, 240);
             choosePlayersCount.BackColor = Color.FromArgb(237, 238, 240);
             choosePlayersCount.DisplayMember = "key";
@@ -85,8 +85,6 @@ namespace CZT.GUI
             exitButton.Cursor = Cursors.Hand;
             exitButton.FlatStyle = FlatStyle.Popup;
             exitButton.Font = new Font("MV Boli", 20.25F);
-            exitButton.BackColor = Color.FromArgb(74, 118, 168);
-            exitButton.ForeColor = Color.FromArgb(0, 0, 0);
             exitButton.ImageAlign = ContentAlignment.BottomCenter;
             exitButton.Location = new Point((int)(ClientSize.Width * 6.6 / 100), (int)(ClientSize.Height / 2) + 140);
             exitButton.Text = "Exit";
@@ -108,9 +106,7 @@ namespace CZT.GUI
             playButton.Cursor = Cursors.Hand;
             playButton.FlatStyle = FlatStyle.Popup;
             playButton.Font = new Font("MV Boli", 20.25F);
-            playButton.BackColor = Color.FromArgb(74, 118, 168);
             playButton.BackgroundImage = Properties.Resources.button;
-            playButton.ForeColor = Color.FromArgb(0, 0, 0);
             playButton.ImageAlign = ContentAlignment.BottomCenter;
             playButton.Location = new Point((int)(ClientSize.Width * 6.6 / 100), (int)(ClientSize.Height / 2));
             playButton.Text = "Play";
@@ -132,12 +128,10 @@ namespace CZT.GUI
             exitFromSettingsButton.Font = new Font("MV Boli", 20.25F);
             exitFromSettingsButton.Text = "Back to Main menu";
             exitFromSettingsButton.FlatStyle = FlatStyle.Popup;
-            exitFromSettingsButton.ForeColor = Color.FromArgb(0, 0, 0);
             exitFromSettingsButton.BackgroundImage = Properties.Resources.button;
             exitFromSettingsButton.ImageAlign = ContentAlignment.BottomCenter;
             exitFromSettingsButton.Location = new Point((int)(ClientSize.Width * 6.6 / 100), (int)(ClientSize.Height / 2) + 140);
             exitFromSettingsButton.Size = new Size(200, 50);
-            exitFromSettingsButton.BackColor = Color.FromArgb(74, 118, 168);
             exitFromSettingsButton.Click += (sender, args) =>
             {
                 buttonClick.Play();
@@ -154,7 +148,7 @@ namespace CZT.GUI
                     KeyValuePair<string, int[]> kvp = (KeyValuePair<string, int[]>)choosePlayersCount.SelectedItem;
                     int[] value = kvp.Value.ToArray();
                     PlayersCount = value[0];
-                    RealPlayersCount = value[0] + value[1];
+                    RealPlayersCount = value[1];
                 }
             };
 
@@ -166,11 +160,9 @@ namespace CZT.GUI
             settingsButton.Text = "Settings";
             settingsButton.BackgroundImage = Properties.Resources.button;
             settingsButton.FlatStyle = FlatStyle.Popup;
-            settingsButton.ForeColor = Color.FromArgb(0, 0, 0);
             settingsButton.ImageAlign = ContentAlignment.BottomCenter;
             settingsButton.Location = new Point((int)(ClientSize.Width * 6.6 / 100), (int)(ClientSize.Height / 2) + 70);
             settingsButton.Size = new Size(200, 50);
-            settingsButton.BackColor = Color.FromArgb(74, 118, 168);
             settingsButton.Click += (sender, args) =>
             {
                 buttonClick.Play();

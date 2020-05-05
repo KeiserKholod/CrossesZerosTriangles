@@ -8,15 +8,12 @@ namespace CZT
 {
     static class Program
     {
-        /// <summary>
-        /// Главная точка входа для приложения.
-        /// </summary>
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GUI.MainScreen(5, 3, 3));
+            Application.Run(new GUI.MainScreen(8, 3, 3));
         }
     }
 }
