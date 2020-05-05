@@ -18,6 +18,7 @@ namespace CZT.Core
         private int currentPlayerInd;
         private List<List<Line>> allLines;
         public HashSet<Point> settedPoints = new HashSet<Point>();
+        public List<Point> Points = new List<Point>();
 
         public bool CantMove { get; private set; }
         public List<List<Line>> AllLines { get; set; }
@@ -81,6 +82,10 @@ namespace CZT.Core
                 return;
             }
             game.Players[currentPlayerInd].MakeMove(this, x, y);
+            var pointToSet = new Point(x, y, game.Players[currentPlayerInd].Id);
+            Points.Add(pointToSet);
+            settedPoints.Add(pointToSet);
+            Line.Connect(game.Players[currentPlayerInd], this, pointToSet);
             currentPlayerInd++;
             //ходим ботам после всех игроков
             //иначе не знаю пока как реализовать
@@ -92,7 +97,6 @@ namespace CZT.Core
                 }
                 currentPlayerInd = 0;
             }
-
             /* var winner = GetWinner();
              if (winner != null)
                  EndLevel();*/
