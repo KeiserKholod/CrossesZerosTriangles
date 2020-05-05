@@ -8,13 +8,14 @@ namespace Tests
     [TestClass]
     public class MakeMapTest
     {
+        private int lengthToWin = 100;
         [TestMethod]
         public void TestInitMap1()
         {
             var names = new List<String>();
             names.Add("petya");
             var game = new Game(names, 1, 1);
-            game.StartLevel(2, 3);
+            game.StartLevel(2, 3,lengthToWin);
             Assert.AreEqual(game.CurrentLevel.width, 2);
             Assert.AreEqual(game.CurrentLevel.height, 3);
         }
@@ -25,7 +26,7 @@ namespace Tests
             var names = new List<String>();
             names.Add("petya");
             var game = new Game(names, 1, 1);
-            game.StartLevel(1000, 100);
+            game.StartLevel(1000, 100, lengthToWin);
             Assert.AreEqual(game.CurrentLevel.width, 1000);
             Assert.AreEqual(game.CurrentLevel.height, 100);
         }
@@ -34,13 +35,14 @@ namespace Tests
     [TestClass]
     public class AddPlayesrTest
     {
+        private int lengthToWin = 5;
         [TestMethod]
         public void TestAddPlayer1()
         {
             var names = new List<String>();
             names.Add("petya");
             var game = new Game(names, 1, 1);
-            game.StartLevel(2, 3);
+            game.StartLevel(2, 3, lengthToWin);
             Assert.AreEqual(game.Players.Count, 1);
             Assert.AreEqual(game.Players[0].Id, 1);
             Assert.AreEqual(game.Players[0].Name, "petya");
@@ -53,7 +55,7 @@ namespace Tests
             names.Add("petya");
             names.Add("vasya");
             var game = new Game(names, 2, 2);
-            game.StartLevel(2, 3);
+            game.StartLevel(2, 3, lengthToWin);
             Assert.AreEqual(game.Players.Count, 2);
             Assert.AreEqual(game.Players[0].Id, 1);
             Assert.AreEqual(game.Players[0].Name, "petya");
@@ -67,7 +69,7 @@ namespace Tests
             var names = new List<String>();
             names.Add("");
             var game = new Game(names, 1, 0);
-            game.StartLevel(2, 3);
+            game.StartLevel(2, 3, lengthToWin);
             Assert.AreEqual(game.Players.Count, 1);
             Assert.AreEqual(game.Players[0].Id, 1);
             Assert.AreEqual(game.Players[0].Name, "player 1");
@@ -79,7 +81,7 @@ namespace Tests
             var names = new List<String>();
             names.Add("petya");
             var game = new Game(names, 2, 1);
-            game.StartLevel(2, 3);
+            game.StartLevel(2, 3, lengthToWin);
             Assert.AreEqual(game.Players.Count, 2);
             Assert.AreEqual(game.Players[0].Id, 1);
             Assert.AreEqual(game.Players[0].Name, "petya");
@@ -95,7 +97,7 @@ namespace Tests
             names.Add("petya");
             names.Add("vasya");
             var game = new Game(names, 4, 2);
-            game.StartLevel(2, 3);
+            game.StartLevel(2, 3, lengthToWin);
             Assert.AreEqual(game.Players.Count, 4);
             Assert.AreEqual(game.Players[0].Id, 1);
             Assert.AreEqual(game.Players[0].Name, "petya");
@@ -112,13 +114,14 @@ namespace Tests
     [TestClass]
     public class MakeMoveTest
     {
+        private int lengthToWin = 5;
         [TestMethod]
         public void TestMakeMovePlayer1()
         {
             var names = new List<String>();
             names.Add("petya");
             var game = new Game(names, 1, 1);
-            game.StartLevel(2, 3);
+            game.StartLevel(2, 3, lengthToWin);
             game.CurrentLevel.MakeMove(1, 1);
             Assert.AreEqual(game.CurrentLevel.Map[1, 1], 1);
         }
@@ -128,7 +131,7 @@ namespace Tests
             var names = new List<String>();
             names.Add("petya");
             var game = new Game(names, 1, 1);
-            game.StartLevel(5, 5);
+            game.StartLevel(5, 5, lengthToWin);
             game.CurrentLevel.MakeMove(2, 3);
             Assert.AreEqual(game.CurrentLevel.Map[2, 3], 1);
         }
@@ -139,7 +142,7 @@ namespace Tests
             names.Add("petya");
             names.Add("vasya");
             var game = new Game(names, 2, 2);
-            game.StartLevel(5, 5);
+            game.StartLevel(5, 5, lengthToWin);
             game.CurrentLevel.MakeMove(2, 3);
             game.CurrentLevel.MakeMove(4, 5);
             Assert.AreEqual(game.CurrentLevel.Map[2, 3], 1);

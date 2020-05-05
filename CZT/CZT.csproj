@@ -46,7 +46,11 @@
     <Compile Include="Core\Level.cs" />
     <Compile Include="Core\Line.cs" />
     <Compile Include="Core\Player.cs" />
+    <Compile Include="Core\Point.cs" />
     <Compile Include="GUI\ExitScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\GameOverScreen.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\GameScreen.cs">
@@ -73,7 +77,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\exit_button.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings" />

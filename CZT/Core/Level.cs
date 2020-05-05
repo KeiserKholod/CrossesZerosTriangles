@@ -10,6 +10,9 @@ namespace CZT.Core
     public class Level
     {
         private Game game;
+        private int lengthToWin;
+        private bool cantMove;
+        private Player winner;
         public readonly int height;
         public readonly int width;
         private int moveNum;
@@ -17,7 +20,10 @@ namespace CZT.Core
         private int currentPlayerInd;
         private List<List<Line>> allLines;
         public HashSet<Point> settedPoints = new HashSet<Point>();
+        public List<Point> Points = new List<Point>();
 
+        public bool CantMove { get; private set; }
+        public Player Winner { get; private set; }
         public List<List<Line>> AllLines { get; set; }
 
         public int MoveNum
@@ -44,11 +50,12 @@ namespace CZT.Core
             }
         }
 
-        public Level(Game game, int width, int height)
+        public Level(Game game, int width, int height, int lengthToWint)
         {
             this.game = game;
             this.width = width;
             this.height = height;
+            this.lengthToWin = lengthToWint;
             moveNum = 0;
             currentPlayerInd = 0;
             PrepareAllLInes(AllLines);
@@ -72,7 +79,17 @@ namespace CZT.Core
 
         public void MakeMove(int x, int y)
         {
+            CantMove = false;
+            if (Map[x, y] != 0)
+            {
+                CantMove = true;
+                return;
+            }
             game.Players[currentPlayerInd].MakeMove(this, x, y);
+            var pointToSet = new Point(x, y, game.Players[currentPlayerInd].Id);
+            Points.Add(pointToSet);
+            settedPoints.Add(pointToSet);
+            Line.Connect(game.Players[currentPlayerInd], this, pointToSet);
             currentPlayerInd++;
             //ходим ботам после всех игроков
             //иначе не знаю пока как реализовать
@@ -84,15 +101,22 @@ namespace CZT.Core
                 }
                 currentPlayerInd = 0;
             }
-
-            /* var winner = GetWinner();
-             if (winner != null)
-                 EndLevel();*/
+            Winner = GetWinner();
         }
 
         private Player GetWinner()
         {
-            //возвращаем победителя, либо null
+            var winnersLines = AllLines.SelectMany(
+                lines => lines.Select(line => line)
+                .Where(line => line.Length == lengthToWin)
+                ).ToList();
+            var winnerId = 0;
+            if (winnersLines.Count != 0)
+            {
+                winnerId = winnersLines[0].Id;
+                return game.Players[winnerId - 1];
+            }
+
             return null;
         }
 
