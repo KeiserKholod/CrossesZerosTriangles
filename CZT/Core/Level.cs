@@ -10,6 +10,7 @@ namespace CZT.Core
     public class Level
     {
         private Game game;
+        private bool cantMove;
         public readonly int height;
         public readonly int width;
         private int moveNum;
@@ -17,7 +18,9 @@ namespace CZT.Core
         private int currentPlayerInd;
         private List<List<Line>> allLines;
         public HashSet<Point> settedPoints = new HashSet<Point>();
+        public List<Point> Points = new List<Point>();
 
+        public bool CantMove { get; private set; }
         public List<List<Line>> AllLines { get; set; }
 
         public int MoveNum
@@ -72,7 +75,17 @@ namespace CZT.Core
 
         public void MakeMove(int x, int y)
         {
+            CantMove = false;
+            if (Map[x, y] != 0)
+            {
+                CantMove = true;
+                return;
+            }
             game.Players[currentPlayerInd].MakeMove(this, x, y);
+            var pointToSet = new Point(x, y, game.Players[currentPlayerInd].Id);
+            Points.Add(pointToSet);
+            settedPoints.Add(pointToSet);
+            Line.Connect(game.Players[currentPlayerInd], this, pointToSet);
             currentPlayerInd++;
             //ходим ботам после всех игроков
             //иначе не знаю пока как реализовать
@@ -84,7 +97,6 @@ namespace CZT.Core
                 }
                 currentPlayerInd = 0;
             }
-
             /* var winner = GetWinner();
              if (winner != null)
                  EndLevel();*/
