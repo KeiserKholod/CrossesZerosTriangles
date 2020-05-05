@@ -40,9 +40,9 @@ namespace CZT.Core
             PreparePlayers(names);
         }
 
-        public void StartLevel(int width, int height)
+        public void StartLevel(int width, int height, int LengthOfWin)
         {
-            var level = new Level(this, width, height);
+            var level = new Level(this, width, height, LengthOfWin);
             Levels.Add(level);
         }
 

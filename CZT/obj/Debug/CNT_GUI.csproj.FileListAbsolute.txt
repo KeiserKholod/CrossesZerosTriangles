@@ -1,8 +1,0 @@
-C:\Users\Gleb\source\repos\CNT_GUI\obj\Debug\CNT_GUI.csprojAssemblyReference.cache
-C:\Users\Gleb\source\repos\CNT_GUI\bin\Debug\CNT_GUI.exe.config
-C:\Users\Gleb\source\repos\CNT_GUI\bin\Debug\CNT_GUI.exe
-C:\Users\Gleb\source\repos\CNT_GUI\bin\Debug\CNT_GUI.pdb
-C:\Users\Gleb\source\repos\CNT_GUI\obj\Debug\CNT_GUI.exe
-C:\Users\Gleb\source\repos\CNT_GUI\obj\Debug\CNT_GUI.pdb
-C:\Users\Gleb\source\repos\CNT_GUI\obj\Debug\CNT_GUI.Properties.Resources.resources
-C:\Users\Gleb\source\repos\CNT_GUI\obj\Debug\CNT_GUI.csproj.GenerateResource.cache
