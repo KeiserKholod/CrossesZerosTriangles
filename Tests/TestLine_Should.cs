@@ -9,6 +9,7 @@ namespace Tests
     [TestClass]
     public class TestLine_Should
     {
+        private int lengthToWin = 100;
         private Game Initialize_OnePlayer()
         {
             var names = new List<string>();
@@ -41,7 +42,7 @@ namespace Tests
         {
             var game1 = Initialize_OnePlayer();
             var player = game1.Players[0];
-            game1.StartLevel(3, 3);
+            game1.StartLevel(3, 3, lengthToWin);
             game1.CurrentLevel.MakeMove(1, 1);
             Assert.AreEqual(1, player.Lines.Count);
         }
@@ -51,18 +52,18 @@ namespace Tests
         {
             var game1 = Initialize_OnePlayer();
             var player = game1.Players[0];
-            game1.StartLevel(3, 3);
+            game1.StartLevel(3, 3, lengthToWin);
             game1.CurrentLevel.MakeMove(1, 0);
             game1.CurrentLevel.MakeMove(1, 2);
             Assert.AreEqual(2, player.Lines.Count);
         }
-        
+
         [TestMethod]
         public void TestSecondPointConnectLine()
         {
             var game1 = Initialize_OnePlayer();
             var player = game1.Players[0];
-            game1.StartLevel(3, 3);
+            game1.StartLevel(3, 3, lengthToWin);
             game1.CurrentLevel.MakeMove(1, 1);
             game1.CurrentLevel.MakeMove(1, 2);
             Assert.AreEqual(2, player.Lines[0].Length);
@@ -74,7 +75,7 @@ namespace Tests
         {
             var game1 = Initialize_OnePlayer();
             var player = game1.Players[0];
-            game1.StartLevel(3, 3);
+            game1.StartLevel(3, 3, lengthToWin);
             game1.CurrentLevel.MakeMove(1, 1);
             game1.CurrentLevel.MakeMove(1, 2);
             game1.CurrentLevel.MakeMove(1, 0);
@@ -87,7 +88,7 @@ namespace Tests
         {
             var game1 = Initialize_OnePlayer();
             var player = game1.Players[0];
-            game1.StartLevel(3, 3);
+            game1.StartLevel(3, 3, lengthToWin);
             game1.CurrentLevel.MakeMove(1, 1);
             game1.CurrentLevel.MakeMove(1, 2);
             game1.CurrentLevel.MakeMove(0, 1);
@@ -99,7 +100,7 @@ namespace Tests
         {
             var game1 = Initialize_OnePlayer();
             var player = game1.Players[0];
-            game1.StartLevel(3, 3);
+            game1.StartLevel(3, 3, lengthToWin);
             game1.CurrentLevel.MakeMove(0, 0);
             game1.CurrentLevel.MakeMove(1, 1);
             Assert.AreEqual(1, player.Lines.Count);
@@ -111,7 +112,7 @@ namespace Tests
         {
             var game1 = Initialize_OnePlayer();
             var player = game1.Players[0];
-            game1.StartLevel(3, 3);
+            game1.StartLevel(3, 3, lengthToWin);
             game1.CurrentLevel.MakeMove(0, 0);
             game1.CurrentLevel.MakeMove(1, 1);
             game1.CurrentLevel.MakeMove(2, 2);
@@ -124,7 +125,7 @@ namespace Tests
         {
             var game1 = Initialize_OnePlayer();
             var player = game1.Players[0];
-            game1.StartLevel(3, 3);
+            game1.StartLevel(3, 3, lengthToWin);
             game1.CurrentLevel.MakeMove(0, 2);
             game1.CurrentLevel.MakeMove(1, 1);
             game1.CurrentLevel.MakeMove(2, 0);
@@ -137,7 +138,7 @@ namespace Tests
         {
             var game1 = Initialize_OnePlayer();
             var player = game1.Players[0];
-            game1.StartLevel(3, 3);
+            game1.StartLevel(3, 3, lengthToWin);
             game1.CurrentLevel.MakeMove(0, 0);
             game1.CurrentLevel.MakeMove(0, 1);
             game1.CurrentLevel.MakeMove(0, 2);
@@ -150,7 +151,7 @@ namespace Tests
         {
             var game1 = Initialize_OnePlayer();
             var player = game1.Players[0];
-            game1.StartLevel(3, 3);
+            game1.StartLevel(3, 3, lengthToWin);
             game1.CurrentLevel.MakeMove(0, 0);
             game1.CurrentLevel.MakeMove(0, 1);
             game1.CurrentLevel.MakeMove(0, 2);
@@ -164,7 +165,7 @@ namespace Tests
         {
             var game1 = Initialize_OnePlayer();
             var player = game1.Players[0];
-            game1.StartLevel(3, 3);
+            game1.StartLevel(3, 3, lengthToWin);
             game1.CurrentLevel.MakeMove(0, 0);
             game1.CurrentLevel.MakeMove(0, 1);
             game1.CurrentLevel.MakeMove(0, 2);
@@ -178,7 +179,7 @@ namespace Tests
         {
             var game1 = Initialize_OnePlayer();
             var player = game1.Players[0];
-            game1.StartLevel(3, 3);
+            game1.StartLevel(3, 3, lengthToWin);
             game1.CurrentLevel.MakeMove(0, 0);
             game1.CurrentLevel.MakeMove(0, 1);
             game1.CurrentLevel.MakeMove(0, 2);
@@ -193,7 +194,7 @@ namespace Tests
         {
             var game1 = Initialize_OnePlayer();
             var player = game1.Players[0];
-            game1.StartLevel(3, 3);
+            game1.StartLevel(3, 3, lengthToWin);
             for (var x = 0; x < game1.CurrentLevel.width; x++)
                 for (var y = 0; y < game1.CurrentLevel.height; y++)
                     game1.CurrentLevel.MakeMove(y, x);
@@ -205,7 +206,7 @@ namespace Tests
         {
             var game1 = Initialize_OnePlayer();
             var player = game1.Players[0];
-            game1.StartLevel(3, 3);
+            game1.StartLevel(3, 3, lengthToWin);
             game1.CurrentLevel.MakeMove(1, 0);
             game1.CurrentLevel.MakeMove(1, 2);
             game1.CurrentLevel.MakeMove(1, 1);
@@ -218,7 +219,7 @@ namespace Tests
         {
             var game1 = Initialize_OnePlayer();
             var player = game1.Players[0];
-            game1.StartLevel(3, 3);
+            game1.StartLevel(3, 3, lengthToWin);
             game1.CurrentLevel.MakeMove(0, 2);
             game1.CurrentLevel.MakeMove(2, 0);
             game1.CurrentLevel.MakeMove(1, 1);
@@ -231,7 +232,7 @@ namespace Tests
         {
             var game1 = Initialize_OnePlayer();
             var player = game1.Players[0];
-            game1.StartLevel(3, 3);
+            game1.StartLevel(3, 3, lengthToWin);
             game1.CurrentLevel.MakeMove(0, 0);
             game1.CurrentLevel.MakeMove(2, 2);
             game1.CurrentLevel.MakeMove(1, 1);
@@ -244,7 +245,7 @@ namespace Tests
         {
             var game1 = Initialize_OnePlayer();
             var player = game1.Players[0];
-            game1.StartLevel(3, 3);
+            game1.StartLevel(3, 3, lengthToWin);
             game1.CurrentLevel.MakeMove(0, 0);
             game1.CurrentLevel.MakeMove(1, 0);
             game1.CurrentLevel.MakeMove(0, 2);
@@ -257,7 +258,7 @@ namespace Tests
         {
             var game1 = Initialize_OnePlayer();
             var player = game1.Players[0];
-            game1.StartLevel(3, 3);
+            game1.StartLevel(3, 3, lengthToWin);
             game1.CurrentLevel.MakeMove(0, 1);
             game1.CurrentLevel.MakeMove(1, 0);
             game1.CurrentLevel.MakeMove(2, 1);
@@ -270,7 +271,7 @@ namespace Tests
         {
             var game1 = Initialize_OnePlayer();
             var player = game1.Players[0];
-            game1.StartLevel(3, 3);
+            game1.StartLevel(3, 3, lengthToWin);
             game1.CurrentLevel.MakeMove(0, 1);
             game1.CurrentLevel.MakeMove(1, 0);
             game1.CurrentLevel.MakeMove(2, 1);
@@ -284,7 +285,7 @@ namespace Tests
         {
             var game1 = Initialize_OnePlayer();
             var player = game1.Players[0];
-            game1.StartLevel(3, 3);
+            game1.StartLevel(3, 3, lengthToWin);
             game1.CurrentLevel.MakeMove(0, 0);
             game1.CurrentLevel.MakeMove(0, 2);
             game1.CurrentLevel.MakeMove(1, 0);
@@ -298,7 +299,7 @@ namespace Tests
         {
             var game1 = Initialize_OnePlayer();
             var player = game1.Players[0];
-            game1.StartLevel(5, 5);
+            game1.StartLevel(5, 5, lengthToWin);
             for (var x = 0; x < game1.CurrentLevel.width; x++)
                 for (var y = 0; y < game1.CurrentLevel.height; y++)
                     game1.CurrentLevel.MakeMove(y, x);
@@ -310,7 +311,7 @@ namespace Tests
         {
             var game1 = Initialize_OnePlayer();
             var player = game1.Players[0];
-            game1.StartLevel(3, 3);
+            game1.StartLevel(3, 3, lengthToWin);
             for (var x = 0; x < game1.CurrentLevel.width; x++)
                 for (var y = 0; y < game1.CurrentLevel.height; y++)
                 {
@@ -327,7 +328,7 @@ namespace Tests
             var game2 = Initialize_TwoPlayer();
             var player1 = game2.Players[0];
             var player2 = game2.Players[1];
-            game2.StartLevel(3, 3);
+            game2.StartLevel(3, 3, lengthToWin);
             game2.CurrentLevel.MakeMove(0, 0);
             game2.CurrentLevel.MakeMove(1, 0);
             Assert.AreEqual(1, player1.Lines.Count);
@@ -342,7 +343,7 @@ namespace Tests
             var game2 = Initialize_TwoPlayer();
             var player1 = game2.Players[0];
             var player2 = game2.Players[1];
-            game2.StartLevel(3, 3);
+            game2.StartLevel(3, 3, lengthToWin);
             game2.CurrentLevel.MakeMove(0, 0);
             game2.CurrentLevel.MakeMove(1, 0);
             game2.CurrentLevel.MakeMove(0, 1);
@@ -360,7 +361,7 @@ namespace Tests
             var player1 = game3.Players[0];
             var player2 = game3.Players[1];
             var player3 = game3.Players[2];
-            game3.StartLevel(3, 3);
+            game3.StartLevel(3, 3, lengthToWin);
             for (var x = 0; x < game3.CurrentLevel.width; x++)
                 for (var y = 0; y < game3.CurrentLevel.height; y++)
                     game3.CurrentLevel.MakeMove(y, x);
