@@ -114,7 +114,7 @@ namespace CZT.Core
             if (winnersLines.Count != 0)
             {
                 winnerId = winnersLines[0].Id;
-                return game.Players[winnerId];
+                return game.Players[winnerId - 1];
             }
 
             return null;
