@@ -46,6 +46,7 @@
     <Compile Include="Core\Level.cs" />
     <Compile Include="Core\Line.cs" />
     <Compile Include="Core\Player.cs" />
+    <Compile Include="Core\Point.cs" />
     <Compile Include="GUI\ExitScreen.cs">
       <SubType>Form</SubType>
     </Compile>
