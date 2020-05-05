@@ -85,8 +85,6 @@ namespace CZT.GUI
             exitButton.Cursor = Cursors.Hand;
             exitButton.FlatStyle = FlatStyle.Popup;
             exitButton.Font = new Font("MV Boli", 20.25F);
-            exitButton.BackColor = Color.FromArgb(74, 118, 168);
-            exitButton.ForeColor = Color.FromArgb(0, 0, 0);
             exitButton.ImageAlign = ContentAlignment.BottomCenter;
             exitButton.Location = new Point((int)(ClientSize.Width * 6.6 / 100), (int)(ClientSize.Height / 2) + 140);
             exitButton.Text = "Exit";
@@ -108,9 +106,7 @@ namespace CZT.GUI
             playButton.Cursor = Cursors.Hand;
             playButton.FlatStyle = FlatStyle.Popup;
             playButton.Font = new Font("MV Boli", 20.25F);
-            playButton.BackColor = Color.FromArgb(74, 118, 168);
             playButton.BackgroundImage = Properties.Resources.button;
-            playButton.ForeColor = Color.FromArgb(0, 0, 0);
             playButton.ImageAlign = ContentAlignment.BottomCenter;
             playButton.Location = new Point((int)(ClientSize.Width * 6.6 / 100), (int)(ClientSize.Height / 2));
             playButton.Text = "Play";
@@ -132,12 +128,10 @@ namespace CZT.GUI
             exitFromSettingsButton.Font = new Font("MV Boli", 20.25F);
             exitFromSettingsButton.Text = "Back to Main menu";
             exitFromSettingsButton.FlatStyle = FlatStyle.Popup;
-            exitFromSettingsButton.ForeColor = Color.FromArgb(0, 0, 0);
             exitFromSettingsButton.BackgroundImage = Properties.Resources.button;
             exitFromSettingsButton.ImageAlign = ContentAlignment.BottomCenter;
             exitFromSettingsButton.Location = new Point((int)(ClientSize.Width * 6.6 / 100), (int)(ClientSize.Height / 2) + 140);
             exitFromSettingsButton.Size = new Size(200, 50);
-            exitFromSettingsButton.BackColor = Color.FromArgb(74, 118, 168);
             exitFromSettingsButton.Click += (sender, args) =>
             {
                 buttonClick.Play();
@@ -166,11 +160,9 @@ namespace CZT.GUI
             settingsButton.Text = "Settings";
             settingsButton.BackgroundImage = Properties.Resources.button;
             settingsButton.FlatStyle = FlatStyle.Popup;
-            settingsButton.ForeColor = Color.FromArgb(0, 0, 0);
             settingsButton.ImageAlign = ContentAlignment.BottomCenter;
             settingsButton.Location = new Point((int)(ClientSize.Width * 6.6 / 100), (int)(ClientSize.Height / 2) + 70);
             settingsButton.Size = new Size(200, 50);
-            settingsButton.BackColor = Color.FromArgb(74, 118, 168);
             settingsButton.Click += (sender, args) =>
             {
                 buttonClick.Play();

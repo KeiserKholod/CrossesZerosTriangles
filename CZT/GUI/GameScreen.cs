@@ -20,7 +20,7 @@ namespace CZT.GUI
         {
             this.Size = size;
             this.game = new Core.Game(playersNames, playersCount, realPlayersCount);
-            this.game.StartLevel(size, size);
+            this.game.StartLevel(size, size, playersCount + 1);
             SoundPlayer gameMedia = new SoundPlayer(Properties.Resources.bensound_punky);
             SoundPlayer buttonClick = new SoundPlayer(Properties.Resources.button_click);
             gameMedia.PlayLooping();
@@ -47,6 +47,14 @@ namespace CZT.GUI
                         this.game.CurrentLevel.MakeMove(position.Column, position.Row);
                         this.Map = this.game.CurrentLevel.Map;
                         ChangeMap();
+                        if (!(this.game.CurrentLevel.Winner == null))
+                        {
+                            var winnerName = game.CurrentLevel.Winner.Name;
+                            this.Hide();
+                            gameMedia.Stop();
+                            GameOverScreen gameOver = new GameOverScreen(size, playersCount, realPlayersCount, playersNames, winnerName);
+                            gameOver.Show();
+                        }
                     };
                     table.Controls.Add(button, column, row);
                 }
@@ -95,10 +103,10 @@ namespace CZT.GUI
                     switch(sym)
                     {
                         case 1:
-                            button.BackgroundImage = Properties.Resources.circle;
+                            button.BackgroundImage = Properties.Resources.cross;
                             break;
                         case 2:
-                            button.BackgroundImage = Properties.Resources.cross;
+                            button.BackgroundImage = Properties.Resources.circle;
                             break;
                         case 3:
                             button.BackgroundImage = Properties.Resources.triangle;

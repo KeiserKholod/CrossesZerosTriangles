@@ -49,6 +49,9 @@
     <Compile Include="GUI\ExitScreen.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GUI\GameOverScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUI\GameScreen.cs">
       <SubType>Form</SubType>
     </Compile>
