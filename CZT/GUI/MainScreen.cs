@@ -12,9 +12,9 @@ namespace CZT.GUI
 {
     class MainScreen : Form
     {
-        public int Size = 5;
-        public int PlayersCount = 3;
-        public int RealPlayersCount = 3;
+        public int Size;
+        public int PlayersCount;
+        public int RealPlayersCount;
         public List<string> PlayersNickNames = new List<string>() { "Player1", "Player2", "Player3" };
 
         public MainScreen(int size, int playersCount, int realPlayesrCount)
@@ -44,11 +44,11 @@ namespace CZT.GUI
             chPlayersCountLabel.Hide();
 
 
-            choosePlayersCount.Items.Add(new KeyValuePair<string, int[]>("1 игрок + 1 бот", new int[] { 1, 1 }));
-            choosePlayersCount.Items.Add(new KeyValuePair<string, int[]>("1 игрок + 2 ботa", new int[] { 1, 2 }));
-            choosePlayersCount.Items.Add(new KeyValuePair<string, int[]>("2 игрока + 0 ботов", new int[] { 2, 0 }));
-            choosePlayersCount.Items.Add(new KeyValuePair<string, int[]>("2 игрока + 1 бот", new int[] { 2, 1 }));
-            choosePlayersCount.Items.Add(new KeyValuePair<string, int[]>("3 игрока + 0 ботов", new int[] { 1, 1 }));
+            choosePlayersCount.Items.Add(new KeyValuePair<string, int[]>("1 игрок + 1 бот", new int[] { 2, 1 }));
+            choosePlayersCount.Items.Add(new KeyValuePair<string, int[]>("1 игрок + 2 ботa", new int[] { 3, 1 }));
+            choosePlayersCount.Items.Add(new KeyValuePair<string, int[]>("2 игрока + 0 ботов", new int[] { 2, 2 }));
+            choosePlayersCount.Items.Add(new KeyValuePair<string, int[]>("2 игрока + 1 бот", new int[] { 3, 2 }));
+            choosePlayersCount.Items.Add(new KeyValuePair<string, int[]>("3 игрока + 0 ботов", new int[] { 3, 3 }));
             choosePlayersCount.Location = new Point(400, 240);
             choosePlayersCount.BackColor = Color.FromArgb(237, 238, 240);
             choosePlayersCount.DisplayMember = "key";
@@ -154,7 +154,7 @@ namespace CZT.GUI
                     KeyValuePair<string, int[]> kvp = (KeyValuePair<string, int[]>)choosePlayersCount.SelectedItem;
                     int[] value = kvp.Value.ToArray();
                     PlayersCount = value[0];
-                    RealPlayersCount = value[0] + value[1];
+                    RealPlayersCount = value[1];
                 }
             };
 

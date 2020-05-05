@@ -16,7 +16,7 @@ namespace CZT
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GUI.MainScreen(5, 3, 3));
+            Application.Run(new GUI.MainScreen(8, 3, 3));
         }
     }
 }

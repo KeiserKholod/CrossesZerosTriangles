@@ -39,6 +39,7 @@ namespace CZT.GUI
             exitButton.FlatStyle = FlatStyle.Popup;
             exitButton.Font = new Font("MV Boli", 20.25F);
             exitButton.BackColor = Color.FromArgb(74, 118, 168);
+            exitButton.BackgroundImage = Properties.Resources.exit_button;
             exitButton.ForeColor = Color.FromArgb(0, 0, 0);
             exitButton.ImageAlign = ContentAlignment.BottomCenter;
             exitButton.Location = new Point(70, 100);
@@ -61,6 +62,7 @@ namespace CZT.GUI
             cancelButton.ImageAlign = ContentAlignment.BottomCenter;
             cancelButton.Location = new Point(230, 100);
             cancelButton.Text = "No";
+            cancelButton.BackgroundImage = Properties.Resources.exit_button;
             cancelButton.Size = new Size(100, 50);
             cancelButton.Click += (sender, args) =>
             {
