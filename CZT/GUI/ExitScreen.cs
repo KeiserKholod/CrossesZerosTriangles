@@ -39,12 +39,9 @@ namespace CZT.GUI
             exitButton.Cursor = Cursors.Hand;
             exitButton.FlatStyle = FlatStyle.Popup;
             exitButton.Font = new Font("MV Boli", 20.25F);
-<<<<<<< Updated upstream
             exitButton.BackColor = Color.FromArgb(74, 118, 168);
             exitButton.BackgroundImage = Properties.Resources.exit_button;
             exitButton.ForeColor = Color.FromArgb(0, 0, 0);
-=======
->>>>>>> Stashed changes
             exitButton.ImageAlign = ContentAlignment.BottomCenter;
             exitButton.Location = new Point(70, 100);
             exitButton.Text = "Yes";
