@@ -86,11 +86,10 @@ namespace CZT.Core
                 return;
             }
             game.Players[currentPlayerInd].MakeMove(this, x, y);
-            var pointToSet = new Point(x, y, game.Players[currentPlayerInd].Id);
-            Points.Add(pointToSet);
-            settedPoints.Add(pointToSet);
-            Line.Connect(game.Players[currentPlayerInd], this, pointToSet);
+            SetPoint(x, y);
             currentPlayerInd++;
+            //определяем победителя
+            Winner = GetWinner();
             //ходим ботам после всех игроков
             //иначе не знаю пока как реализовать
             if (currentPlayerInd == game.RealPlayersCount)
@@ -98,10 +97,18 @@ namespace CZT.Core
                 for (int i = currentPlayerInd; i < game.PlayersCount; i++)
                 {
                     game.Players[i].MakeMove(this);
+                    Winner = GetWinner();
                 }
                 currentPlayerInd = 0;
             }
-            Winner = GetWinner();
+        }
+
+        private void SetPoint(int x, int y)
+        {
+            var pointToSet = new Point(x, y, game.Players[currentPlayerInd].Id);
+            Points.Add(pointToSet);
+            settedPoints.Add(pointToSet);
+            Line.Connect(game.Players[currentPlayerInd], this, pointToSet);
         }
 
         private Player GetWinner()
