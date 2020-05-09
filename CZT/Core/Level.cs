@@ -10,7 +10,9 @@ namespace CZT.Core
     public class Level
     {
         private Game game;
+        private int movesCount;
         private int lengthToWin;
+        private bool isDraw;
         private bool cantMove;
         private Player winner;
         public readonly int height;
@@ -23,20 +25,10 @@ namespace CZT.Core
         public List<Point> Points = new List<Point>();
 
         public bool CantMove { get; private set; }
+        public bool IsDraw { get; private set; }
         public Player Winner { get; private set; }
         public List<List<Line>> AllLines { get; set; }
-
-        public int MoveNum
-        {
-            get
-            {
-                return moveNum;
-            }
-            private set
-            {
-                moveNum = value;
-            }
-        }
+        public int MoveNum { get; private set; }
 
         public int[,] Map
         {
@@ -56,7 +48,7 @@ namespace CZT.Core
             this.width = width;
             this.height = height;
             this.lengthToWin = lengthToWint;
-            moveNum = 0;
+            MoveNum = 0;
             currentPlayerInd = 0;
             PrepareAllLInes(AllLines);
             PrepareMap();
@@ -86,10 +78,13 @@ namespace CZT.Core
                 return;
             }
             game.Players[currentPlayerInd].MakeMove(this, x, y);
+            MoveNum++;
             SetPoint(x, y);
             currentPlayerInd++;
             //определяем победителя
             Winner = GetWinner();
+            //проверяем ничью
+            IsDraw = CheckDraw();
             //ходим ботам после всех игроков
             //иначе не знаю пока как реализовать
             if (currentPlayerInd == game.RealPlayersCount)
@@ -97,7 +92,11 @@ namespace CZT.Core
                 for (int i = currentPlayerInd; i < game.PlayersCount; i++)
                 {
                     game.Players[i].MakeMove(this);
+                    MoveNum++;
+                    //определяем победителя
                     Winner = GetWinner();
+                    //проверяем ничью
+                    IsDraw = CheckDraw();
                 }
                 currentPlayerInd = 0;
             }
@@ -125,6 +124,13 @@ namespace CZT.Core
             }
 
             return null;
+        }
+
+        private bool CheckDraw()
+        {
+            if ((MoveNum == width * height) && Winner == null)
+                return true;
+            return false;
         }
 
         private void EndLevel()
