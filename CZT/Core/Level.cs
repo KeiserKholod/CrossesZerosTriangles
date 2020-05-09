@@ -48,6 +48,7 @@ namespace CZT.Core
             this.width = width;
             this.height = height;
             this.lengthToWin = lengthToWint;
+            IsDraw = false;
             MoveNum = 0;
             currentPlayerInd = 0;
             PrepareAllLInes(AllLines);

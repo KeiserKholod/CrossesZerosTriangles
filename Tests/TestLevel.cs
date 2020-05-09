@@ -15,7 +15,7 @@ namespace Tests
             var names = new List<String>();
             names.Add("petya");
             var game = new Game(names, 1, 1);
-            game.StartLevel(2, 3,lengthToWin);
+            game.StartLevel(2, 3, lengthToWin);
             Assert.AreEqual(game.CurrentLevel.width, 2);
             Assert.AreEqual(game.CurrentLevel.height, 3);
         }
@@ -126,6 +126,7 @@ namespace Tests
             Assert.AreEqual(game.CurrentLevel.Map[1, 1], 1);
         }
 
+        [TestMethod]
         public void TestMakeMovePlayer2()
         {
             var names = new List<String>();
@@ -136,6 +137,7 @@ namespace Tests
             Assert.AreEqual(game.CurrentLevel.Map[2, 3], 1);
         }
 
+        [TestMethod]
         public void TestMakeTwoPlayersTwoMoves()
         {
             var names = new List<String>();
@@ -144,9 +146,101 @@ namespace Tests
             var game = new Game(names, 2, 2);
             game.StartLevel(5, 5, lengthToWin);
             game.CurrentLevel.MakeMove(2, 3);
-            game.CurrentLevel.MakeMove(4, 5);
+            game.CurrentLevel.MakeMove(3, 4);
             Assert.AreEqual(game.CurrentLevel.Map[2, 3], 1);
-            Assert.AreEqual(game.CurrentLevel.Map[4, 5], 2);
+            Assert.AreEqual(game.CurrentLevel.Map[3, 4], 2);
+        }
+    }
+
+    [TestClass]
+    public class CheckWinTest
+    {
+        [TestMethod]
+        public void TestWinFirstOfTwo()
+        {
+            var lengthToWin = 2;
+            var names = new List<String>();
+            names.Add("petya");
+            names.Add("vasya");
+            var game = new Game(names, 2, 2);
+            game.StartLevel(5, 5, lengthToWin);
+            game.CurrentLevel.MakeMove(0, 0);
+            game.CurrentLevel.MakeMove(2, 2);
+            game.CurrentLevel.MakeMove(1, 1);
+            Assert.AreEqual(game.CurrentLevel.Winner.Id, 1);
+            Assert.AreEqual(game.CurrentLevel.IsDraw, false);
+        }
+
+        [TestMethod]
+        public void TestWinSecondOfTwo()
+        {
+            var lengthToWin = 2;
+            var names = new List<String>();
+            names.Add("petya");
+            names.Add("vasya");
+            var game = new Game(names, 2, 2);
+            game.StartLevel(5, 5, lengthToWin);
+            game.CurrentLevel.MakeMove(0, 0);
+            game.CurrentLevel.MakeMove(2, 2);
+            game.CurrentLevel.MakeMove(1, 3);
+            game.CurrentLevel.MakeMove(3, 3);
+            Assert.AreEqual(game.CurrentLevel.Winner.Id, 2);
+            Assert.AreEqual(game.CurrentLevel.IsDraw, false);
+        }
+
+        [TestMethod]
+        public void TestWinThirdOfThree()
+        {
+            var lengthToWin = 2;
+            var names = new List<String>();
+            names.Add("petya");
+            names.Add("vasya");
+            names.Add("kolya");
+            var game = new Game(names, 3, 3);
+            game.StartLevel(5, 5, lengthToWin);
+            game.CurrentLevel.MakeMove(2, 1);
+            game.CurrentLevel.MakeMove(1, 3);
+            game.CurrentLevel.MakeMove(1, 1);
+            game.CurrentLevel.MakeMove(3, 3);
+            game.CurrentLevel.MakeMove(4, 4);
+            game.CurrentLevel.MakeMove(0, 0);
+            Assert.AreEqual(game.CurrentLevel.Winner.Id, 3);
+            Assert.AreEqual(game.CurrentLevel.IsDraw, false);
+        }
+
+        [TestMethod]
+        public void TestDraw()
+        {
+            var lengthToWin = 5;
+            var names = new List<String>();
+            names.Add("petya");
+            names.Add("vasya");
+            names.Add("kolya");
+            var game = new Game(names, 3, 3);
+            game.StartLevel(2, 2, lengthToWin);
+            game.CurrentLevel.MakeMove(0, 0);
+            game.CurrentLevel.MakeMove(0, 1);
+            game.CurrentLevel.MakeMove(1, 0);
+            game.CurrentLevel.MakeMove(1, 1);
+            Assert.AreEqual(game.CurrentLevel.Winner, null);
+            Assert.AreEqual(game.CurrentLevel.IsDraw, true);
+        }
+
+        [TestMethod]
+        public void TestNotDrawAndNotWin()
+        {
+            var lengthToWin = 5;
+            var names = new List<String>();
+            names.Add("petya");
+            names.Add("vasya");
+            names.Add("kolya");
+            var game = new Game(names, 3, 3);
+            game.StartLevel(2, 2, lengthToWin);
+            game.CurrentLevel.MakeMove(0, 0);
+            game.CurrentLevel.MakeMove(0, 1);
+            game.CurrentLevel.MakeMove(1, 0);
+            Assert.AreEqual(game.CurrentLevel.Winner, null);
+            Assert.AreEqual(game.CurrentLevel.IsDraw, false);
         }
     }
 }
