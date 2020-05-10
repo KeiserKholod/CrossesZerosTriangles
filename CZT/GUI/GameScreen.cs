@@ -90,7 +90,7 @@ namespace CZT.GUI
                 Thread.Sleep(150);
                 gameMedia.Stop();
                 this.Hide();
-                var mainScreen = new MainScreen(size, 3, 3);
+                var mainScreen = new MainScreen(this.Size, playersCount, realPlayersCount);
                 mainScreen.Show();
             };
 
