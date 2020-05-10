@@ -11,7 +11,7 @@ namespace CZT.GUI
 {
     class GameOverScreen : Form
     {
-        public GameOverScreen(int size, int playersCount, int realPlayersCount, List<string> playersNames, string winnerName)
+        public GameOverScreen(int size, int playersCount, int realPlayersCount, List<string> playersNames, string winnerName, bool draw)
         {
             SoundPlayer buttonClick = new SoundPlayer(Properties.Resources.button_click);
             var exitMenuButton = new Button();
@@ -29,6 +29,7 @@ namespace CZT.GUI
             label.Location = new Point(0, 0);
             label.Size = new Size(400, 100);
             label.Text = "Game Over\n" + winnerName + " - win!";
+            if (draw == true) label.Text = "Game Over\nDraw";
             label.BackColor = Color.FromArgb(237, 238, 240);
             label.Font = new Font("MV Boli", 20.00F);
             label.TextAlign = ContentAlignment.BottomCenter;
