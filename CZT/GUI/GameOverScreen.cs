@@ -69,7 +69,7 @@ namespace CZT.GUI
                 buttonClick.Play();
                 Thread.Sleep(150);
                 this.Hide();
-                var mainMenu = new MainScreen(8, 3, 3);
+                var mainMenu = new MainScreen(size, playersCount, realPlayersCount);
                 mainMenu.Show();
             };
 
