@@ -20,11 +20,7 @@ namespace CZT.GUI
         {
             this.Size = (int)Math.Sqrt(Math.Pow((double)(playersCount + 1), (double)playersCount));
             this.game = new Core.Game(playersNames, playersCount, realPlayersCount);
-<<<<<<< Updated upstream
-            this.game.StartLevel(size, size, playersCount + 1);
-=======
             this.game.StartLevel(this.Size, this.Size, playersCount + 1);
->>>>>>> Stashed changes
             SoundPlayer gameMedia = new SoundPlayer(Properties.Resources.bensound_punky);
             SoundPlayer buttonClick = new SoundPlayer(Properties.Resources.button_click);
             gameMedia.PlayLooping();
