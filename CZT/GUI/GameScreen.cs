@@ -49,8 +49,12 @@ namespace CZT.GUI
                         ChangeMap();
                         if (!(this.game.CurrentLevel.Winner == null) || this.game.CurrentLevel.IsDraw == true)
                         {
+                            string winnerName = "";
                             var draw = this.game.CurrentLevel.IsDraw;
-                            var winnerName = game.CurrentLevel.Winner.Name;
+                            if (!(this.game.CurrentLevel.Winner == null))
+                                {
+                                    winnerName = game.CurrentLevel.Winner.Name;
+                                }
                             this.Hide();
                             gameMedia.Stop();
                             GameOverScreen gameOver = new GameOverScreen(size, playersCount, realPlayersCount, playersNames, winnerName, draw);
