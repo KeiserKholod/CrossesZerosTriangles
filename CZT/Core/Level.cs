@@ -80,7 +80,6 @@ namespace CZT.Core
             }
             game.Players[currentPlayerInd].MakeMove(this, x, y);
             MoveNum++;
-            SetPoint(x, y);
             currentPlayerInd++;
             //определяем победителя
             Winner = GetWinner();
@@ -103,13 +102,6 @@ namespace CZT.Core
             }
         }
 
-        private void SetPoint(int x, int y)
-        {
-            var pointToSet = new Point(x, y, game.Players[currentPlayerInd].Id);
-            Points.Add(pointToSet);
-            settedPoints.Add(pointToSet);
-            Line.Connect(game.Players[currentPlayerInd], this, pointToSet);
-        }
 
         private Player GetWinner()
         {
