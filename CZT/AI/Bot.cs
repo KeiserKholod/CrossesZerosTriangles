@@ -7,41 +7,35 @@ using CZT.Core;
 
 namespace CZT.AI
 {
-    class Bot : IPlayer
+    class Bot
     {
         private int winCoef;
         private int loseCoef;
         private int neutralCoef;
         private Random rnd = new Random();
+        private Player player;
 
         public readonly int BotID;
         public readonly string Name;
-        private Game currentGame;
+        //private Level currentLevel;
 
-        public int Score { get; set; }
-
-        string IPlayer.Name => Name;
-
-        public int Id => BotID;
-
-        public Bot(Game game, string name, int id)
+        public Bot(string name, int id)
         {
             winCoef = 10;
             loseCoef = -10;
             neutralCoef = 1;
             BotID = id;
             Name = name;
-            currentGame = game;
         }
 
-        public Bot(Game game, int id)
+        public Bot(int id, Player player)
         {
             winCoef = 10;
             loseCoef = -10;
             neutralCoef = 1;
             BotID = id;
-            Name = "Bot " + Id;
-            currentGame = game;
+            Name = "Bot " + id;
+            this.player = player;
         }
 
         public void CalculateBestMove()
@@ -49,22 +43,30 @@ namespace CZT.AI
 
         }
 
-        public void RandomMove()
+        private void RandomMove(Level level)
         {
-            var x = rnd.Next(0, currentGame.CurrentLevel.width);
-            var y = rnd.Next(0, currentGame.CurrentLevel.height);
-            var point = new Point(x, y, BotID);
-            if (!currentGame.CurrentLevel.settedPoints.Contains(point))
+            var x = rnd.Next(0, level.width);
+            var y = rnd.Next(0, level.height);
+            while (level.Map[x, y] != 0)
             {
-                currentGame.CurrentLevel.Map[x, y] = BotID;
+                x = rnd.Next(0, level.width);
+                y = rnd.Next(0, level.height);
+            }
+            var point = new Point(x, y, BotID);
+            if (!level.settedPoints.Contains(point))
+            {
+                level.Map[x, y] = BotID;
+                level.Points.Add(point);
+                level.settedPoints.Add(point);
+                Line.Connect(player, level, point);
                 return;
             }
-            else RandomMove();
+            else RandomMove(level);
         }
 
         public void MakeMove(Level level)
         {
-            RandomMove();
+            RandomMove(level);
         }
     }
 }
