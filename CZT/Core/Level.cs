@@ -91,12 +91,15 @@ namespace CZT.Core
             {
                 for (int i = currentPlayerInd; i < game.PlayersCount; i++)
                 {
-                    game.Players[i].MakeMove(this);
-                    MoveNum++;
-                    //определяем победителя
-                    Winner = GetWinner();
-                    //проверяем ничью
-                    IsDraw = CheckDraw();
+                    if ((MoveNum < height * width) && (Winner == null))
+                    {
+                        game.Players[i].MakeMove(this);
+                        MoveNum++;
+                        //определяем победителя
+                        Winner = GetWinner();
+                        //проверяем ничью
+                        IsDraw = CheckDraw();
+                    }
                 }
                 currentPlayerInd = 0;
             }

@@ -18,9 +18,9 @@ namespace CZT.GUI
 
         public GameScreen(int size, int playersCount, int realPlayersCount, List<string> playersNames)
         {
-            this.Size = size;
+            this.Size = (int)Math.Sqrt(Math.Pow((double)(playersCount + 1), (double)playersCount));
             this.game = new Core.Game(playersNames, playersCount, realPlayersCount);
-            this.game.StartLevel(size, size, 5);
+            this.game.StartLevel(this.Size, this.Size, playersCount + 1);
             SoundPlayer gameMedia = new SoundPlayer(Properties.Resources.bensound_punky);
             SoundPlayer buttonClick = new SoundPlayer(Properties.Resources.button_click);
             gameMedia.PlayLooping();
@@ -28,14 +28,14 @@ namespace CZT.GUI
             table = new TableLayoutPanel();
             table.BackColor = Color.FromArgb(173, 216, 230);
             table.Location = new Point(2, 2);
-            table.Size = new Size(76 * size, 76 * size);
-            for (int i = 0; i < size; i++)
+            table.Size = new Size(76 * this.Size, 76 * this.Size);
+            for (int i = 0; i < this.Size; i++)
             {
-                table.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / size));
-                table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / size));
+                table.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / this.Size));
+                table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / this.Size));
             }
-            for (int column = 0; column < size; column++)
-                for (int row = 0; row < size; row++)
+            for (int column = 0; column < this.Size; column++)
+                for (int row = 0; row < this.Size; row++)
                 {
                     var button = new Button();
                     button.BackColor = Color.FromArgb(255, 255, 255);
@@ -47,12 +47,17 @@ namespace CZT.GUI
                         this.game.CurrentLevel.MakeMove(position.Column, position.Row);
                         this.Map = this.game.CurrentLevel.Map;
                         ChangeMap();
-                        if (!(this.game.CurrentLevel.Winner == null))
+                        if (!(this.game.CurrentLevel.Winner == null) || this.game.CurrentLevel.IsDraw == true)
                         {
-                            var winnerName = game.CurrentLevel.Winner.Name;
+                            string winnerName = "";
+                            var draw = this.game.CurrentLevel.IsDraw;
+                            if (!(this.game.CurrentLevel.Winner == null))
+                                {
+                                    winnerName = game.CurrentLevel.Winner.Name;
+                                }
                             this.Hide();
                             gameMedia.Stop();
-                            GameOverScreen gameOver = new GameOverScreen(size, playersCount, realPlayersCount, playersNames, winnerName);
+                            GameOverScreen gameOver = new GameOverScreen(size, playersCount, realPlayersCount, playersNames, winnerName, draw);
                             gameOver.Show();
                         }
                     };
@@ -63,8 +68,8 @@ namespace CZT.GUI
             // Game Screen Settins
             this.AutoScaleMode = AutoScaleMode.None;
             this.BackColor = Color.FromArgb(173, 216, 230);
-            this.ClientSize = new Size(76 * size, 76 * size + 60);
-            this.MinimumSize = new Size(76 * size, 76 * size+ 60);
+            this.ClientSize = new Size(76 * this.Size, 76 * this.Size + 60);
+            this.MinimumSize = new Size(76 * this.Size, 76 * this.Size+ 60);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.None;
 
@@ -85,7 +90,7 @@ namespace CZT.GUI
                 Thread.Sleep(150);
                 gameMedia.Stop();
                 this.Hide();
-                var mainScreen = new MainScreen(size, 3, 3);
+                var mainScreen = new MainScreen(this.Size, playersCount, realPlayersCount);
                 mainScreen.Show();
             };
 
