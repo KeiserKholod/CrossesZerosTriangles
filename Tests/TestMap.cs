@@ -15,7 +15,7 @@ namespace Tests
             var names = new List<String>();
             names.Add("petya");
             var game = new Game(names, 1, 1);
-            game.StartLevel(2, 3,lengthToWin);
+            game.StartLevel(2, 3, lengthToWin);
             Assert.AreEqual(game.CurrentLevel.width, 2);
             Assert.AreEqual(game.CurrentLevel.height, 3);
         }

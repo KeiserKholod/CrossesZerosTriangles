@@ -65,10 +65,10 @@ namespace CZT.Core
                     if (secondIncorrect)
                         ConnectPairWithoutCorrectLines(player, p, pair);
                     else
-                        ConnectPairFirstIncorrect(secondLines, p, pair);
+                        ConnectPairIncorrect(secondLines, p, pair.Item1);
                 else
                     if (secondIncorrect)
-                        ConnectPairSecondIncorrect(firstLines, p, pair);
+                        ConnectPairIncorrect(firstLines, p, pair.Item2);
                 else
                     ConnectPairBothCorrect(player, firstLines.First(), secondLines.First(), p);
             }
@@ -87,25 +87,14 @@ namespace CZT.Core
             p.Lines.Add(line1);
         }
 
-        private static void ConnectPairFirstIncorrect(IEnumerable<Line> secondLines, Point p, Tuple<Point, Point> pair)
+        private static void ConnectPairIncorrect(IEnumerable<Line> secondLines, Point p, Point pair)
         {
             foreach (var line in secondLines)
             {
                 line.Points.Add(p);
                 p.Lines.Add(line);
-                line.Points.Add(pair.Item1);
-                pair.Item1.Lines.Add(line);
-            }
-        }
-
-        private static void ConnectPairSecondIncorrect(IEnumerable<Line> firstLines, Point p, Tuple<Point, Point> pair)
-        {
-            foreach (var line in firstLines)
-            {
-                line.Points.Add(p);
-                p.Lines.Add(line);
-                line.Points.Add(pair.Item2);
-                pair.Item2.Lines.Add(line);
+                line.Points.Add(pair);
+                pair.Lines.Add(line);
             }
         }
 
